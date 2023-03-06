@@ -8,12 +8,11 @@ class Game {
     this.makeHtmlBoard();
     this.gameOver = false;
   }
-}
 
 makeBoard() {
   this.board = [];
   for (let y = 0; y < this.height; y++) {
-    this.board.push(Array.from({ length: this.width }));
+    this.board.push(Array.from({length: this.width}));
   }
 };
 
@@ -76,7 +75,7 @@ handleClick(evt) {
   
   const x = +evt.target.id;
 
-  const y = findSpotForCol(x);
+  const y = this.findSpotForCol(x);
   if (y === null) {
     return;
   }
@@ -105,7 +104,7 @@ checkForWin() {
         x < this.width &&
         this.board[y][x] === this.currPlayer
     );
-  }
+
 
   for (let y = 0; y < this.height; y++) {
     for (let x = 0; x < this.width; x++) {
@@ -120,7 +119,8 @@ checkForWin() {
       }
     }
   }
-
+}
+};
 class Player {
   constructor(color) {
     this.color = color;
@@ -130,5 +130,5 @@ class Player {
 document.getElementById('start-game').addEventListener('click', () => {
   let p1 = new Player(document.getElementById('p1-color').value);
   let p2 = new Player(document.getElementById('p2-color').value);
-  new Game(p1, p2);
+  new Game(p1, p2); 
 });
